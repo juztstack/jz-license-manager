@@ -1,7 +1,10 @@
-import { mount } from 'corvuxjs'
-import type { CorvuxInstance, ReactiveState } from 'corvuxjs'
+import { mount } from '@corvux/core'
+import type { CorvuxInstance, ReactiveState } from '@corvux/core'
 import { authState } from '@ui/auth/state'
-import type { RouterInstance } from '@corvux/router'
+
+interface RouterInstance {
+  navigate(path: string): void
+}
 
 type LoginState = {
   email: string

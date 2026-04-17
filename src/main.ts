@@ -3,8 +3,7 @@ import './services';
 import { authState } from './ui/auth/state';
 import { createLicenseId } from './core/domain/value-objects/LicenseId';
 import { statusBadge, actionButtons } from './ui/shared/badges';
-import { createReactive } from './lib/reactive';
-import { cvx } from './lib/cvx';
+import { createReactive, cvx } from '@corvux/core';
 
 declare global {
   interface Window {

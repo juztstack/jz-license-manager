@@ -1,5 +1,5 @@
-import { mount } from 'corvuxjs'
-import type { CorvuxInstance, ReactiveState } from 'corvuxjs'
+import { mount } from '@corvux/core'
+import type { CorvuxInstance, ReactiveState } from '@corvux/core'
 import type { LicenseService } from '@application/use-cases/LicenseService'
 import type { License } from '@core/domain/entities/License'
 import { createLicenseId } from '@core/domain/value-objects/LicenseId'

@@ -1,3 +1,4 @@
-import { createRouter } from 'corvuxjs'
+// TODO: update when @corvux/router is published
+// import { createRouter } from '@corvux/router'
 
-export const router = createRouter({ mode: 'path' })
+// export const router = createRouter({ mode: 'path' })

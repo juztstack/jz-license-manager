@@ -1,7 +1,10 @@
-import { mount } from 'corvuxjs'
-import type { CorvuxInstance, ReactiveState } from 'corvuxjs'
+import { mount } from '@corvux/core'
+import type { CorvuxInstance, ReactiveState } from '@corvux/core'
 import type { LicenseService } from '@application/use-cases/LicenseService'
-import type { RouterInstance } from '@corvux/router'
+
+interface RouterInstance {
+  navigate(path: string): void
+}
 
 type PageState = {
   productName: string

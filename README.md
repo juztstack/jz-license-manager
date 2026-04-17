@@ -19,7 +19,7 @@ Browser-based license management dashboard. No backend required — all data per
 | Styles | Tailwind CSS v4 |
 | Storage | IndexedDB (browser-native) |
 | Architecture | Hexagonal / Clean Architecture |
-| Framework | None — vanilla TypeScript |
+| Framework | Courvux |
 
 ## Architecture
 

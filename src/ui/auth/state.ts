@@ -1,4 +1,4 @@
-import { createReactive } from '../../lib/reactive';
+import { createReactive } from '@corvux/core';
 
 const COOKIE_NAME = 'jz_auth';
 const COOKIE_EXPIRY_DAYS = 7;

@@ -1,5 +1,5 @@
-import { mount } from 'corvuxjs'
-import type { CorvuxInstance, ReactiveState } from 'corvuxjs'
+import { mount } from '@corvux/core'
+import type { CorvuxInstance, ReactiveState } from '@corvux/core'
 import type { ProductService } from '@application/use-cases/ProductService'
 import type { Product } from '@core/domain/entities/Product'
 import { statusBadge, actionButtons } from '@ui/shared/badges'
