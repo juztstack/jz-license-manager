@@ -1,0 +1,56 @@
+<div class="space-y-6">
+  <div class="flex items-center justify-between">
+    <div>
+      <h2 class="text-lg font-semibold text-white">Licenses</h2>
+      <p class="text-sm text-gray-400 mt-0.5" data-text="countLabel"></p>
+    </div>
+    <a
+      href="/licenses/new"
+      class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+    >
+      + New License
+    </a>
+  </div>
+
+  <!-- Edit form (inline, create stays on /licenses/new) -->
+  <div data-if="formVisible" class="bg-gray-800 border border-gray-700 rounded-lg p-5">
+    <h3 class="text-sm font-semibold text-white mb-4">Edit License</h3>
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-xs text-gray-400 mb-1.5">Product Name</label>
+        <input id="f-product" type="text" placeholder="My App Pro"
+          class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+      <div>
+        <label class="block text-xs text-gray-400 mb-1.5">Assigned To</label>
+        <input id="f-assigned" type="text" placeholder="user@example.com"
+          class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+      <div>
+        <label class="block text-xs text-gray-400 mb-1.5">Expires At <span class="text-gray-500">(optional)</span></label>
+        <input id="f-expires" type="date"
+          class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+    </div>
+    <div class="flex gap-3 mt-4">
+      <button id="btn-submit" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors">Update</button>
+      <button id="btn-cancel" class="bg-gray-700 hover:bg-gray-600 text-gray-300 text-sm font-medium px-4 py-2 rounded-md transition-colors">Cancel</button>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+    <table class="w-full text-left text-sm">
+      <thead>
+        <tr class="border-b border-gray-700">
+          <th class="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Key</th>
+          <th class="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Product</th>
+          <th class="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Assigned To</th>
+          <th class="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+          <th class="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Expires</th>
+          <th class="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody data-html="licensesHtml"></tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<div class="min-h-screen bg-gray-900 text-white flex">
+
+  <!-- Sidebar -->
+  <aside class="w-56 shrink-0 border-r border-gray-700/60 flex flex-col fixed inset-y-0 left-0 z-10 bg-gray-900">
+
+    <!-- Brand -->
+    <div class="px-4 py-5 border-b border-gray-700/60 flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-md bg-indigo-600 flex items-center justify-center shrink-0">
+        <span class="text-white text-xs font-bold tracking-tight">JZ</span>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-white leading-none">JZ Licenses</p>
+        <p class="text-xs text-gray-500 mt-0.5">Manager</p>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+      <a href="/licenses" data-nav="/licenses"
+        class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-700/60 hover:text-white transition-colors">
+        Licenses
+      </a>
+      <a href="/users" data-nav="/users"
+        class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-700/60 hover:text-white transition-colors">
+        Users
+      </a>
+      <a href="/products" data-nav="/products"
+        class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-700/60 hover:text-white transition-colors">
+        Products
+      </a>
+      <a href="/bundles" data-nav="/bundles"
+        class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-700/60 hover:text-white transition-colors">
+        Bundles
+      </a>
+      <a href="/clients" data-nav="/clients"
+        class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-700/60 hover:text-white transition-colors">
+        Clients
+      </a>
+    </nav>
+
+    <!-- Logout -->
+    <div class="px-3 py-4 border-t border-gray-700/60">
+      <button id="btn-logout"
+        class="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-700/60 hover:text-white transition-colors text-left">
+        Sign out
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- Content -->
+  <div class="flex-1 min-h-screen ml-56 flex flex-col">
+    <main id="router-outlet" class="flex-1 max-w-6xl w-full mx-auto px-6 py-8"></main>
+  </div>
+
+</div>

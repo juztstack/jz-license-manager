@@ -1,0 +1,52 @@
+<div class="max-w-md space-y-6">
+  <div>
+    <a href="/licenses" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">← Back to licenses</a>
+    <h2 class="text-lg font-semibold text-white mt-3">New License</h2>
+  </div>
+
+  <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 space-y-5">
+
+    <div>
+      <label class="block text-xs font-medium text-gray-400 mb-1.5">Product Name</label>
+      <input
+        id="input-product"
+        type="text"
+        data-bind="productName"
+        placeholder="e.g. My App Pro"
+        class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+      />
+    </div>
+
+    <div>
+      <label class="block text-xs font-medium text-gray-400 mb-1.5">Assigned To</label>
+      <input
+        id="input-assigned"
+        type="text"
+        data-bind="assignedTo"
+        placeholder="e.g. user@example.com"
+        class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+      />
+    </div>
+
+    <div>
+      <label class="block text-xs font-medium text-gray-400 mb-1.5">Expires At <span class="text-gray-500">(optional)</span></label>
+      <input
+        id="input-expires"
+        type="date"
+        data-bind="expiresAt"
+        class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+      />
+    </div>
+
+    <div data-if="errorVisible" class="rounded-md bg-red-900/50 border border-red-700 px-3 py-2">
+      <p class="text-sm text-red-300" data-text="errorMsg"></p>
+    </div>
+
+    <button
+      id="btn-submit"
+      class="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm font-medium py-2 rounded-md transition-colors"
+    >
+      Create License
+    </button>
+  </div>
+</div>
