@@ -37,17 +37,6 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,ico,webmanifest}'],
         navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/views\//],
-        runtimeCaching: [
-          {
-            urlPattern: /\/views\/.+\.html$/,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'views-cache',
-              expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 },
-            },
-          },
-        ],
       },
     }),
   ],
