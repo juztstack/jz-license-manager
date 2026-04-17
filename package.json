@@ -14,15 +14,6 @@
     "@tailwindcss/vite": "^4.2.2",
     "tailwindcss": "^4.2.2",
     "typescript": "~6.0.2",
-    "vite": "^8.0.4",
-    "vite-plugin-pwa": "^0.21.2"
-  },
-  "dependencies": {
-    "@corvux/core": "^0.1.2"
-  },
-  "overrides": {
-    "vite-plugin-pwa": {
-      "vite": "$vite"
-    }
+    "vite": "^8.0.4"
   }
 }
