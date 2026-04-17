@@ -10,6 +10,9 @@
     "docker:build": "docker build -t jz-license-manager .",
     "docker:run": "docker run -p 3000:80 jz-license-manager"
   },
+  "dependencies": {
+    "@corvux/core": "^0.1.2"
+  },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "tailwindcss": "^4.2.2",
