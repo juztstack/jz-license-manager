@@ -4,11 +4,13 @@ import { authState } from './ui/auth/state';
 import { createLicenseId } from './core/domain/value-objects/LicenseId';
 import { statusBadge, actionButtons } from './ui/shared/badges';
 import { createReactive, cvx } from '@corvux/core';
+import { createRouter } from '@corvux/router';
+import type { RouterInstance } from '@corvux/router';
 
 declare global {
   interface Window {
     authState: typeof authState;
-    router: { navigate(path: string): void };
+    router: RouterInstance;
     services: Record<string, any>;
   }
 }
@@ -31,34 +33,24 @@ const STATUS_CLS: Record<string, string> = {
   revoked: 'bg-red-900/60 text-red-300',
 };
 
-const router = {
-  navigate(path: string) {
-    window.location.hash = path;
-    handleRoute();
-  },
-};
+const router = createRouter({ mode: 'hash' });
 window.router = router;
 
-const routeState = createReactive({ currentPath: window.location.hash.slice(1) || '/' });
-window.addEventListener('hashchange', () => {
-  routeState.state.currentPath = window.location.hash.slice(1) || '/';
-  handleRoute();
+// Auth guard — redirige a /login si no autenticado
+router.guard((ctx, next) => {
+  if (ctx.path !== '/login' && !authState.state.isAuthenticated) {
+    router.navigate('/login');
+  } else {
+    next();
+  }
 });
 
-function handleRoute() {
-  const path = routeState.state.currentPath;
-
-  if (path !== '/login' && !authState.state.isAuthenticated) {
-    router.navigate('/login');
-    return;
-  }
-
-  if (path === '/login') {
-    renderLogin();
-  } else {
-    renderAppLayout(path);
-  }
-}
+router.on('/login', () => renderLogin());
+router.on('/licenses', () => renderAppLayout('/licenses'));
+router.on('/users', () => renderAppLayout('/users'));
+router.on('/products', () => renderAppLayout('/products'));
+router.on('/bundles', () => renderAppLayout('/bundles'));
+router.on('/clients', () => renderAppLayout('/clients'));
 
 function renderLogin() {
   const { state, watch } = createReactive({
@@ -684,4 +676,5 @@ function renderPage(path: string) {
   }
 }
 
-handleRoute();
+// Navegación inicial — usa el hash actual o redirige a /licenses
+router.navigate(window.location.hash.slice(1) || '/licenses');

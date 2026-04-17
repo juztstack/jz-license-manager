@@ -1,4 +1,4 @@
-import { createReactive } from '@corvux/core';
+import { createStore } from '@corvux/store';
 
 const COOKIE_NAME = 'jz_auth';
 const COOKIE_EXPIRY_DAYS = 7;
@@ -19,31 +19,40 @@ function deleteCookie(name: string): void {
 }
 
 const storedToken = getCookie(COOKIE_NAME);
-const initialState = {
-  isAuthenticated: !!storedToken,
-  token: storedToken,
-  user: storedToken ? { email: 'admin@example.com', role: 'admin' } : null,
-};
 
-const authBase = createReactive(initialState);
+const authStore = createStore({
+  state: {
+    isAuthenticated: !!storedToken,
+    token: storedToken as string | null,
+    user: storedToken ? { email: 'admin@example.com', role: 'admin' } : null as { email: string; role: string } | null,
+  },
+  actions: {
+    login({ state }: { state: { isAuthenticated: boolean; token: string | null; user: { email: string; role: string } | null } }, payload?: unknown) {
+      const { email, role = 'admin' } = payload as { email: string; role?: string };
+      const token = btoa(`${email}:${Date.now()}`);
+      setCookie(COOKIE_NAME, token, COOKIE_EXPIRY_DAYS);
+      state.isAuthenticated = true;
+      state.token = token;
+      state.user = { email, role };
+    },
+    logout({ state }: { state: { isAuthenticated: boolean; token: string | null; user: { email: string; role: string } | null } }) {
+      deleteCookie(COOKIE_NAME);
+      state.isAuthenticated = false;
+      state.token = null;
+      state.user = null;
+    },
+  },
+});
 
 export const authState = {
-  ...authBase,
   get state() {
-    return authBase.state;
+    return authStore.state;
   },
   login(email: string, role: string = 'admin') {
-    const token = btoa(`${email}:${Date.now()}`);
-    setCookie(COOKIE_NAME, token, COOKIE_EXPIRY_DAYS);
-    authBase.state.isAuthenticated = true;
-    authBase.state.token = token;
-    authBase.state.user = { email, role };
+    authStore.dispatch('login', { email, role });
   },
   logout() {
-    deleteCookie(COOKIE_NAME);
-    authBase.state.isAuthenticated = false;
-    authBase.state.token = null;
-    authBase.state.user = null;
+    authStore.dispatch('logout');
   },
   validateCredentials(email: string, password: string): boolean {
     return email === 'admin@example.com' && password === 'admin';

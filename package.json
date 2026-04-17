@@ -11,7 +11,11 @@
     "docker:run": "docker run -p 3000:80 jz-license-manager"
   },
   "dependencies": {
-    "@corvux/core": "^0.1.2"
+    "@corvux/components": "^0.1.1",
+    "@corvux/core": "^0.1.2",
+    "@corvux/router": "^0.1.1",
+    "@corvux/store": "^0.1.1",
+    "@corvux/template": "^0.1.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
