@@ -58,7 +58,6 @@ export default defineConfig({
       '@infrastructure': resolve(__dirname, 'src/infrastructure'),
       '@ui': resolve(__dirname, 'src/ui'),
       '@shared': resolve(__dirname, 'src/shared'),
-      '@corvux/core': resolve(__dirname, '../corvux/packages/core/src'),
     },
   },
 })
